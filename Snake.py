@@ -115,7 +115,7 @@ class snake(threading.Thread):
       if self.bigfud[0] in range(head[0]-cell_size*2, head[0]+cell_size*2) and self.bigfud[1] in range(head[1]-cell_size*2, head[1]+cell_size*2):
 	self.tick = 70
 	self.score += 25
-        #flag = True 
+	
     if f == 0:
       self.over()
  
@@ -269,5 +269,3 @@ def main():
 if __name__ == __main__:
   main()
 
-else:
-  sys.exit(0)
