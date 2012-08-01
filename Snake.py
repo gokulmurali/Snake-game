@@ -97,7 +97,7 @@ class snake(threading.Thread):
     head = self.array[0]
     if self.x in range(head[0] - cell_size, head[0] + cell_size) and self.y in range(head[1] - cell_size, head[1] + cell_size):
        self.callrand()
-    f = self.checkcol()   
+      
     self.screen.fill(bgcolor)
     pygame.draw.rect(self.screen, (255, 255, 255), (10, 20, cell_size * 60 - 20, cell_size * 60 - 30), 1)
     for i in self.array:
@@ -108,6 +108,9 @@ class snake(threading.Thread):
     t=f.render('Score: %d' %self.score, True, (150, 150, 150))
     self.screen.blit(t, (230, 5))
     pygame.display.update()
+    f = self.checkcol() 
+    if f == 0:
+    	self.over()
     if self.f == True and self.tick < 50:
       self.tick += 1
       pygame.draw.circle(self.screen, bigfood_color, (self.bigfud[0], self.bigfud[1]), cell_size * 2, 0)
@@ -115,9 +118,6 @@ class snake(threading.Thread):
       if self.bigfud[0] in range(head[0]-cell_size*2, head[0]+cell_size*2) and self.bigfud[1] in range(head[1]-cell_size*2, head[1]+cell_size*2):
 	self.tick = 70
 	self.score += 25
-	
-    if f == 0:
-      self.over()
  
   def move(self, direction):
 
